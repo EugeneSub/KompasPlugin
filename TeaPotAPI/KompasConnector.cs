@@ -1,31 +1,33 @@
 ﻿using System;
 using Kompas6API5;
 using Kompas6Constants3D;
+using TeaPotParameters;
 
-
-namespace TeaPot
+namespace TeaPotAPI
 {
-     class KompasConnector
+    public class KompasConnector
     {
-        // c помощью этого обьекта мы можем 
-        // выбрать определенное окно приложения компас
+        // Выбор определенного окна приложения компас
         public KompasObject _kompas = null;
 
-        // с помощью этого обьекта мы можем
-        // создать 3Д документ для построения предметов
+        // Создание 3Д документа для построения предметов
         private ksDocument3D _doc3D = null;
 
-        // c помощью этого обьекта мы можем
-        // взять управление конкретно над интерфейсом программы
+        // Управление над интерфейсом программы
         public ksPart iPart = null;
 
-        // public KompasConnector(HiveParams hiveParams)
+        /// <summary>
+        /// Запуск Kompas 3D
+        /// </summary>
+        /// <param name="teaPotParams"></param>
         public KompasConnector(TeaPotParams teaPotParams)
         {
             TakeKompas();
         }
 
-        // Запустить компас, Береме контроль _kompas, и интерфейсом
+        /// <summary>
+        /// Функция запуска Kompas 3D
+        /// </summary>
         public void TakeKompas()
         {
             // если окно компаса не включено
@@ -41,13 +43,13 @@ namespace TeaPot
             _kompas.ActivateControllerAPI();
 
 
-            // присвоить управление документами _doc3D
+            // Присвоение управления документами _doc3D
             _doc3D = (ksDocument3D)_kompas.Document3D();
 
-            // создать документ
-            _doc3D.Create(false/*invisible*/, true);
+            // Создание документа
+            _doc3D.Create(false, true);
 
-            // получить интерфейс детали
+            // Получение интерфейса детали
             iPart = (ksPart)_doc3D.GetPart((short)Part_Type.pTop_Part);
         }
 

@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaPot", "TeaPot\TeaPot.csproj", "{324A4001-5830-4325-AEB4-7407C7CA129D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaPotGUI", "TeaPotGUI\TeaPotGUI.csproj", "{89909905-D5DA-440F-8AEC-A155F5BE731F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaPot.UnitTests", "TeaPot.UnitTests\TeaPot.UnitTests.csproj", "{24A01FFD-7DBE-4D6D-AABC-897CBBB691DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaPotParameters", "TeaPotParameters\TeaPotParameters.csproj", "{D38D9BE8-FB92-484B-B731-1CDCF1113540}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaPotAPI", "TeaPotAPI\TeaPotAPI.csproj", "{3F28FE28-B24C-483F-AA63-270AD7727B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaPotUnitTests", "TeaPotUnitTests\TeaPotUnitTests.csproj", "{2F3534AC-CC23-473A-986A-7EE1BF5B4D65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{324A4001-5830-4325-AEB4-7407C7CA129D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{324A4001-5830-4325-AEB4-7407C7CA129D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{324A4001-5830-4325-AEB4-7407C7CA129D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{324A4001-5830-4325-AEB4-7407C7CA129D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24A01FFD-7DBE-4D6D-AABC-897CBBB691DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24A01FFD-7DBE-4D6D-AABC-897CBBB691DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24A01FFD-7DBE-4D6D-AABC-897CBBB691DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24A01FFD-7DBE-4D6D-AABC-897CBBB691DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89909905-D5DA-440F-8AEC-A155F5BE731F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89909905-D5DA-440F-8AEC-A155F5BE731F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89909905-D5DA-440F-8AEC-A155F5BE731F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89909905-D5DA-440F-8AEC-A155F5BE731F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D38D9BE8-FB92-484B-B731-1CDCF1113540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D38D9BE8-FB92-484B-B731-1CDCF1113540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D38D9BE8-FB92-484B-B731-1CDCF1113540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D38D9BE8-FB92-484B-B731-1CDCF1113540}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F28FE28-B24C-483F-AA63-270AD7727B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F28FE28-B24C-483F-AA63-270AD7727B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F28FE28-B24C-483F-AA63-270AD7727B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F28FE28-B24C-483F-AA63-270AD7727B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3534AC-CC23-473A-986A-7EE1BF5B4D65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3534AC-CC23-473A-986A-7EE1BF5B4D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3534AC-CC23-473A-986A-7EE1BF5B4D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3534AC-CC23-473A-986A-7EE1BF5B4D65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

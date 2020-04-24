@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
-[assembly: AssemblyTitle("TeaPot.UnitTests")]
+[assembly: AssemblyTitle("TeaPotParameters")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TeaPot.UnitTests")]
+[assembly: AssemblyProduct("TeaPotParameters")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("24a01ffd-7dbe-4d6d-aabc-897cbbb691df")]
+[assembly: Guid("d38d9be8-fb92-484b-b731-1cdcf1113540")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

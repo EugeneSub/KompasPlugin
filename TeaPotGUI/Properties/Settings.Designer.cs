@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TeaPot.Properties
+namespace TeaPotGUI.Properties
 {
 
 

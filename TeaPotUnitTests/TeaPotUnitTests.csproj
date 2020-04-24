@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{24A01FFD-7DBE-4D6D-AABC-897CBBB691DF}</ProjectGuid>
+    <ProjectGuid>{2F3534AC-CC23-473A-986A-7EE1BF5B4D65}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TeaPot.UnitTests</RootNamespace>
-    <AssemblyName>TeaPot.UnitTests</AssemblyName>
+    <RootNamespace>TeaPotUnitTests</RootNamespace>
+    <AssemblyName>TeaPotUnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,16 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TeaPotTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeaPotUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TeaPot\TeaPot.csproj">
-      <Project>{324a4001-5830-4325-aeb4-7407c7ca129d}</Project>
-      <Name>TeaPot</Name>
+    <ProjectReference Include="..\TeaPotParameters\TeaPotParameters.csproj">
+      <Project>{d38d9be8-fb92-484b-b731-1cdcf1113540}</Project>
+      <Name>TeaPotParameters</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
