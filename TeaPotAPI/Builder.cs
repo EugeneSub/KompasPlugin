@@ -26,7 +26,19 @@ namespace TeaPotAPI
             CreateBody(iPart, teaPotParams);
             CreateSpout(iPart, _kompas, teaPotParams);
             CreateHandle(iPart, _kompas, teaPotParams);
-            CreateHandle2(iPart, _kompas, teaPotParams);
+            CreateHandle2(iPart, _kompas, teaPotParams);  
+        }
+
+        /// <summary>
+        /// Сборка с закрытой ручкой
+        /// </summary>
+        /// <param name="iPart">Интерфейс детали</param>
+        /// <param name="_kompas">Окно приложения Компас</param>
+        /// <param name="teaPotParams">Параметры детали</param>
+        public void BuildClosed(ksPart iPart, KompasObject _kompas, TeaPotParams teaPotParams)
+        {
+            this.iPart = iPart;
+            CreateHandleClosed(iPart, _kompas, teaPotParams);
         }
 
         /// <summary>
@@ -78,9 +90,28 @@ namespace TeaPotAPI
             double theheight = (teaPotParams.TeaPotDiameter / 5);
             double thelength = 40;
             double thewidth = (teaPotParams.TeaPotDiameter / 5);
-            double parx = -(teaPotParams.TeaPotDiameter / 2) - 10 - (thelength / 2);
+            double parx = -(teaPotParams.TeaPotDiameter / 2) - (teaPotParams.TeaPotDiameter / 10) - (thelength / 2);
             double pary = -(teaPotParams.TeaPotDiameter / 10);
             RectangleCreator(iPart, _kompas, teaPotParams, theoffset, theheight, thelength, thewidth, parx, pary);
+        }
+
+        /// <summary>
+        /// Создание закрытой ручки
+        /// </summary>
+        /// <param name="iPart">Интерфейс детали</param>
+        /// <param name="_kompas">Окно приложения Компас</param>
+        /// <param name="teaPotParams">Параметры детали</param>
+        public void CreateHandleClosed(ksPart iPart, KompasObject _kompas, TeaPotParams teaPotParams)
+        {
+            double theoffset = teaPotParams.TeaPotHeight - teaPotParams.TeaPotHandleSize;
+            double theheight = (teaPotParams.TeaPotDiameter / 5);
+            double thelength = 40;
+            double thewidth = (teaPotParams.TeaPotDiameter / 5);
+            double parx = -(teaPotParams.TeaPotDiameter / 2) - (teaPotParams.TeaPotDiameter/10) - (thelength / 2);
+            double pary = -(teaPotParams.TeaPotDiameter / 10);
+            RectangleCreator(iPart, _kompas, teaPotParams, theoffset, theheight, thelength, thewidth, parx, pary);
+            Fillet(iPart, 10, teaPotParams.TeaPotDiameter / 20, teaPotParams);
+            Fillet(iPart, 11, teaPotParams.TeaPotDiameter / 20, teaPotParams);
         }
 
         /// <summary>
@@ -98,11 +129,9 @@ namespace TeaPotAPI
             double parx = -(teaPotParams.TeaPotDiameter / 2) - 10 - (teaPotParams.TeaPotDiameter / 5) - (teaPotParams.TeaPotDiameter / 10);
             double pary = -((teaPotParams.TeaPotDiameter / 10));
             RectangleCreator(iPart, _kompas, teaPotParams, theoffset, theheight, thelength, thewidth, parx, pary);
-            Fillet(iPart, 10, teaPotParams.TeaPotDiameter / 20, teaPotParams);
-            Fillet(iPart, 11, teaPotParams.TeaPotDiameter / 20, teaPotParams);
-            Fillet(iPart, 12, 0.1, teaPotParams);
-            Fillet(iPart, 13, teaPotParams.TeaPotDiameter / 10, teaPotParams);
-            Fillet(iPart, 14, teaPotParams.TeaPotDiameter / 10, teaPotParams);
+             Fillet(iPart, 10, teaPotParams.TeaPotDiameter / 20, teaPotParams);
+             Fillet(iPart, 11, teaPotParams.TeaPotDiameter / 20, teaPotParams);
+             Fillet(iPart, 12, 0.1, teaPotParams);
         }
 
         /// <summary>

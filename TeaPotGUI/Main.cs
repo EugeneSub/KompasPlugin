@@ -35,7 +35,6 @@ namespace TeaPotGUI
             //Объявление цветов в comboBox по умолчанию
             comboBox1.SelectedItem = TeaPotParams.TheColor.Orange;
             comboBox2.SelectedItem = TeaPotParams.TheColor.Green;
-
         }
         /// <summary>
         /// Функция проверки на корректность введенных данных 
@@ -118,6 +117,11 @@ namespace TeaPotGUI
             if (Points == 6)
             {
                 button1.Enabled = true;
+                label10.Visible = false;
+            }
+            else 
+            {
+                label10.Visible = true;
             }
         }
 
@@ -132,7 +136,11 @@ namespace TeaPotGUI
             Convert.ToInt32(textBox6.Text), Convert.ToInt32(textBox4.Text),(TeaPotParams.TheColor)comboBox1.SelectedItem, (TeaPotParams.TheColor)comboBox2.SelectedItem);
             kompasConnector = new KompasConnector(_teaPotParams);
             Builder builder = new Builder();
-            builder.Build(kompasConnector.iPart, kompasConnector._kompas, _teaPotParams);   
+            builder.Build(kompasConnector.iPart, kompasConnector._kompas, _teaPotParams);
+            if (checkBox1.Checked)
+            {
+                builder.BuildClosed(kompasConnector.iPart, kompasConnector._kompas, _teaPotParams);
+            }
         }
 
         /// <summary>

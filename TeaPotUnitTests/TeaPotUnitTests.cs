@@ -4,7 +4,6 @@ using TeaPotParameters;
 
 namespace TeaPotUnitTests
 {
-
     [TestFixture]
     public class TeaPotTests
     {
