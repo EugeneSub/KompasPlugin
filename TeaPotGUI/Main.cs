@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using TeaPotAPI;
 using TeaPotParameters;
@@ -41,88 +44,36 @@ namespace TeaPotGUI
         /// </summary>
         private void ColorValidate_Values()
         {
-            button1.Enabled = false;
-            int Points = 0;
+            bool isAllBoxesValid = CheckTextBox(textBox1, 100, 140);
+            isAllBoxesValid = CheckTextBox(textBox2, 150, 200) && isAllBoxesValid;
+            isAllBoxesValid = CheckTextBox(textBox3, 20, 25) && isAllBoxesValid;
+            isAllBoxesValid = CheckTextBox(textBox4, 95, 125) && isAllBoxesValid;
+            isAllBoxesValid = CheckTextBox(textBox5, 15, 
+                Convert.ToInt32(textBox1.Text) / 5) && isAllBoxesValid;
+            isAllBoxesValid = CheckTextBox(textBox6, 15, 
+                Convert.ToInt32(textBox1.Text) / 5) && isAllBoxesValid;
+            button1.Enabled = isAllBoxesValid;
+            label10.Visible = !isAllBoxesValid;
+        }
 
-            if ((textBox1.Text == "") || Convert.ToInt32(textBox1.Text) < 100 || (Convert.ToInt32(textBox1.Text)) > 140)
+        /// <summary>
+        /// Функция проверки на корректность введенных данных в одной ячейке
+        /// </summary>
+        /// <param name="textBox">Ячейка ввода данных</param>
+        /// <param name="minValue">Минимальное значение</param>
+        /// <param name="maxValue">Максимальное значение</param>
+        /// <returns></returns>
+        private bool CheckTextBox(TextBox textBox, double minValue, double maxValue)
+        {
+            textBox.BackColor = Color.Red;
+            if (!string.IsNullOrWhiteSpace(textBox.Text) && 
+                double.Parse(textBox.Text) >= minValue && 
+                double.Parse(textBox.Text) <= maxValue)
             {
-                textBox1.BackColor = System.Drawing.Color.Red;
-
+                textBox.BackColor = Color.Green;
+                return true;
             }
-            else
-            {
-                textBox1.BackColor = System.Drawing.Color.Green;
-                Points++;
-            }
-
-            if ((textBox2.Text == "") || Convert.ToInt32(textBox2.Text) < 150 || (Convert.ToInt32(textBox2.Text)) > 200)
-            {
-                textBox2.BackColor = System.Drawing.Color.Red;
-
-            }
-            else
-            {
-                textBox2.BackColor = System.Drawing.Color.Green;
-                Points++;
-
-            }
-
-            if ((textBox3.Text == "") || Convert.ToInt32(textBox3.Text) < 20 || (Convert.ToInt32(textBox3.Text)) > 25)
-            {
-                textBox3.BackColor = System.Drawing.Color.Red;
-
-            }
-            else
-            {
-                textBox3.BackColor = System.Drawing.Color.Green;
-                Points++;
-            }
-
-            if ((textBox4.Text == "") || Convert.ToInt32(textBox4.Text) < 95 || (Convert.ToInt32(textBox4.Text)) > 125)
-            {
-                textBox4.BackColor = System.Drawing.Color.Red;
-
-            }
-            else
-            {
-                textBox4.BackColor = System.Drawing.Color.Green;
-                Points++;
-
-            }
-
-            if ((textBox5.Text == "") || Convert.ToInt32(textBox5.Text) < 15 || (Convert.ToInt32(textBox5.Text)) > Convert.ToInt32(textBox1.Text) / 5)
-            {
-                textBox5.BackColor = System.Drawing.Color.Red;
-
-            }
-            else
-            {
-                textBox5.BackColor = System.Drawing.Color.Green;
-                Points++;
-
-            }
-
-            if ((textBox6.Text == "") || Convert.ToInt32(textBox6.Text) < 15 || (Convert.ToInt32(textBox6.Text)) > Convert.ToInt32(textBox1.Text) / 5)
-            {
-                textBox6.BackColor = System.Drawing.Color.Red;
-
-            }
-            else
-            {
-                textBox6.BackColor = System.Drawing.Color.Green;
-                Points++;
-
-            }
-
-            if (Points == 6)
-            {
-                button1.Enabled = true;
-                label10.Visible = false;
-            }
-            else 
-            {
-                label10.Visible = true;
-            }
+            return false;
         }
 
         /// <summary>
@@ -132,14 +83,20 @@ namespace TeaPotGUI
         /// <param name="e">Передает объект, специфичный для обрабатываемого события</param>
         private void button1_Click(object sender, EventArgs e)
         {
-            _teaPotParams = new TeaPotParams(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox5.Text),
-            Convert.ToInt32(textBox6.Text), Convert.ToInt32(textBox4.Text),(TeaPotParams.TheColor)comboBox1.SelectedItem, (TeaPotParams.TheColor)comboBox2.SelectedItem);
+            _teaPotParams = new TeaPotParams(Convert.ToInt32(textBox1.Text), 
+                Convert.ToInt32(textBox2.Text), 
+                Convert.ToInt32(textBox3.Text), 
+                Convert.ToInt32(textBox5.Text), 
+                Convert.ToInt32(textBox6.Text), 
+                Convert.ToInt32(textBox4.Text),
+                (TeaPotParams.TheColor)comboBox1.SelectedItem, 
+                (TeaPotParams.TheColor)comboBox2.SelectedItem);
             kompasConnector = new KompasConnector(_teaPotParams);
             Builder builder = new Builder();
-            builder.Build(kompasConnector.iPart, kompasConnector._kompas, _teaPotParams);
+            builder.Build(kompasConnector.iPart, kompasConnector.kompas, _teaPotParams);
             if (checkBox1.Checked)
             {
-                builder.BuildClosed(kompasConnector.iPart, kompasConnector._kompas, _teaPotParams);
+                builder.BuildClosed(kompasConnector.iPart, kompasConnector.kompas, _teaPotParams);
             }
         }
 

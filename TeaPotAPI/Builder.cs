@@ -8,7 +8,7 @@ namespace TeaPotAPI
 {
     public class Builder
     {
-        public ksPart iPart;
+        private ksPart iPart;
 
         //Создание интерфейса эскиза. Используется в нескольких методах, поэтому расположен здесь
         ksEntity iSketch;
@@ -68,13 +68,17 @@ namespace TeaPotAPI
         /// <param name="teaPotParams">Параметры детали</param>
         public void CreateSpout(ksPart iPart, KompasObject _kompas, TeaPotParams teaPotParams)
         {
-            double theoffset = teaPotParams.TeaPotHeight - (teaPotParams.TeaPotDiameter / 5) * 1.5;
+            double theoffset = teaPotParams.TeaPotHeight - 
+                (teaPotParams.TeaPotDiameter / 5) * 1.5;
             double theheight = teaPotParams.TeaPotSpoutHeight;
             double thelength = teaPotParams.TeaPotSpoutLength;
             double thewidth = teaPotParams.TeaPotSpoutWidth;
             double parx = (teaPotParams.TeaPotDiameter / 2) - 5;
             double pary = -(teaPotParams.TeaPotDiameter / 10);
-            RectangleCreator(iPart, _kompas, teaPotParams, theoffset, theheight, thelength, thewidth, parx, pary);
+            RectangleCreator(iPart, _kompas, 
+                teaPotParams, theoffset, 
+                theheight, thelength, 
+                thewidth, parx, pary);
             Fillet(iPart, 7, teaPotParams.TeaPotSpoutWidth / 2, teaPotParams);                    
         }
        
@@ -86,13 +90,18 @@ namespace TeaPotAPI
         /// <param name="teaPotParams">Параметры детали</param>
         public void CreateHandle(ksPart iPart, KompasObject _kompas, TeaPotParams teaPotParams)
         {
-            double theoffset = teaPotParams.TeaPotHeight - (teaPotParams.TeaPotDiameter / 5) * 1.5;
+            double theoffset = teaPotParams.TeaPotHeight - 
+                (teaPotParams.TeaPotDiameter / 5) * 1.5;
             double theheight = (teaPotParams.TeaPotDiameter / 5);
             double thelength = 40;
             double thewidth = (teaPotParams.TeaPotDiameter / 5);
-            double parx = -(teaPotParams.TeaPotDiameter / 2) - (teaPotParams.TeaPotDiameter / 10) - (thelength / 2);
+            double parx = -(teaPotParams.TeaPotDiameter / 2) - 
+                (teaPotParams.TeaPotDiameter / 10) - (thelength / 2);
             double pary = -(teaPotParams.TeaPotDiameter / 10);
-            RectangleCreator(iPart, _kompas, teaPotParams, theoffset, theheight, thelength, thewidth, parx, pary);
+            RectangleCreator(iPart, _kompas, 
+                teaPotParams, theoffset, 
+                theheight, thelength,
+                thewidth, parx, pary);
         }
 
         /// <summary>
@@ -107,9 +116,13 @@ namespace TeaPotAPI
             double theheight = (teaPotParams.TeaPotDiameter / 5);
             double thelength = 40;
             double thewidth = (teaPotParams.TeaPotDiameter / 5);
-            double parx = -(teaPotParams.TeaPotDiameter / 2) - (teaPotParams.TeaPotDiameter/10) - (thelength / 2);
+            double parx = -(teaPotParams.TeaPotDiameter / 2) - 
+                (teaPotParams.TeaPotDiameter/10) - (thelength / 2);
             double pary = -(teaPotParams.TeaPotDiameter / 10);
-            RectangleCreator(iPart, _kompas, teaPotParams, theoffset, theheight, thelength, thewidth, parx, pary);
+            RectangleCreator(iPart, _kompas, 
+                teaPotParams, theoffset, 
+                theheight, thelength, 
+                thewidth, parx, pary);
             Fillet(iPart, 10, teaPotParams.TeaPotDiameter / 20, teaPotParams);
             Fillet(iPart, 11, teaPotParams.TeaPotDiameter / 20, teaPotParams);
         }
@@ -123,12 +136,18 @@ namespace TeaPotAPI
         public void CreateHandle2(ksPart iPart, KompasObject _kompas, TeaPotParams teaPotParams)
         {
             double theoffset = teaPotParams.TeaPotHeight - teaPotParams.TeaPotHandleSize;
-            double theheight = teaPotParams.TeaPotHeight - theoffset - (teaPotParams.TeaPotDiameter / 10);
+            double theheight = teaPotParams.TeaPotHeight - theoffset - 
+                (teaPotParams.TeaPotDiameter / 10);
             double thelength = (teaPotParams.TeaPotDiameter / 5);
             double thewidth = (teaPotParams.TeaPotDiameter / 5);
-            double parx = -(teaPotParams.TeaPotDiameter / 2) - 10 - (teaPotParams.TeaPotDiameter / 5) - (teaPotParams.TeaPotDiameter / 10);
+            double parx = -(teaPotParams.TeaPotDiameter / 2) - 10 - 
+                (teaPotParams.TeaPotDiameter / 5) - 
+                (teaPotParams.TeaPotDiameter / 10);
             double pary = -((teaPotParams.TeaPotDiameter / 10));
-            RectangleCreator(iPart, _kompas, teaPotParams, theoffset, theheight, thelength, thewidth, parx, pary);
+            RectangleCreator(iPart, _kompas, 
+                teaPotParams, theoffset, 
+                theheight, thelength, 
+                thewidth, parx, pary);
              Fillet(iPart, 10, teaPotParams.TeaPotDiameter / 20, teaPotParams);
              Fillet(iPart, 11, teaPotParams.TeaPotDiameter / 20, teaPotParams);
              Fillet(iPart, 12, 0.1, teaPotParams);
@@ -140,14 +159,17 @@ namespace TeaPotAPI
         /// <param name="iSketch">Эскиз</param>
         /// <param name="iDefinitionSketch">Определение эскиза</param>
         /// <param name="offset">Смещение от начальной плоскости</param>
-        private void CreateSketch(out ksEntity iSketch, out ksSketchDefinition iDefinitionSketch, double offset = 0)
+        private void CreateSketch(out ksEntity iSketch, 
+            out ksSketchDefinition iDefinitionSketch, double offset = 0)
         {
             #region Создание смещенной плоскости -------------------------
             // интерфейс смещенной плоскости
             ksEntity iPlane = (ksEntity)iPart.NewEntity((short)Obj3dType.o3d_planeOffset);
             // Получаем интрефейс настроек смещенной плоскости
-            ksPlaneOffsetDefinition iPlaneDefinition = (ksPlaneOffsetDefinition)iPlane.GetDefinition();
-            // Настройки : начальная позиция, направление смещения, расстояние от плоскости, принять все настройки (create)
+            ksPlaneOffsetDefinition iPlaneDefinition = 
+                (ksPlaneOffsetDefinition)iPlane.GetDefinition();
+            // Настройки : начальная позиция, направление смещения, 
+            // расстояние от плоскости, принять все настройки (create)
             iPlaneDefinition.SetPlane(iPart.GetDefaultEntity((short)Obj3dType.o3d_planeXOY));
             iPlaneDefinition.direction = true;
             iPlaneDefinition.offset = offset;
@@ -171,12 +193,14 @@ namespace TeaPotAPI
         /// <param name="depth">Глубина выдавливания</param>
         /// <param name="direction">Направление выдавливания</param>
         /// <param name="X">Цвет детали</param>
-        private void ExctrusionSketch(ksPart iPart, ksEntity iSketch, double depth, bool direction,int X)
+        private void ExctrusionSketch(ksPart iPart, ksEntity iSketch, 
+            double depth, bool direction,int X)
         {
             //Операция выдавливание
             ksEntity entityExtr = (ksEntity)iPart.NewEntity((short)Obj3dType.o3d_bossExtrusion);
             //Интерфейс операции выдавливания
-            ksBossExtrusionDefinition extrusionDef = (ksBossExtrusionDefinition)entityExtr.GetDefinition();
+            ksBossExtrusionDefinition extrusionDef = 
+                (ksBossExtrusionDefinition)entityExtr.GetDefinition();
             //Интерфейс структуры параметров выдавливания
             ksExtrusionParam extrProp = (ksExtrusionParam)extrusionDef.ExtrusionParam();
             //Эскиз операции выдавливания
@@ -214,20 +238,24 @@ namespace TeaPotAPI
         /// <param name="index">Индекс грани, рёбра которой необходимо скруглить</param>
         /// <param name="radius">Радиус скругления</param>
         /// <param name="teaPotParams">Параметры детали</param>
-        public void Fillet(ksPart iPart, int index, double radius, TeaPotParams teaPotParams)
+        private void Fillet(ksPart iPart, int index, double radius, TeaPotParams teaPotParams)
         {
             // Получение интерфейса объекта скругление
-            ksEntity entityFillet = (ksEntity)iPart.NewEntity((int)Obj3dType.o3d_fillet);
+            ksEntity entityFillet = 
+                (ksEntity)iPart.NewEntity((int)Obj3dType.o3d_fillet);
             // Получаем интерфейс параметров объекта скругление
-            ksFilletDefinition filletDefinition = (ksFilletDefinition)entityFillet.GetDefinition();
+            ksFilletDefinition filletDefinition = 
+                (ksFilletDefinition)entityFillet.GetDefinition();
             // Радиус скругления 
             filletDefinition.radius = radius;
             // Не продолжать по касательным ребрам
             filletDefinition.tangent = true;
             // Получаем массив граней объекта
-            ksEntityCollection entityCollectionPart = (ksEntityCollection)iPart.EntityCollection((int)Obj3dType.o3d_face);
+            ksEntityCollection entityCollectionPart = 
+                (ksEntityCollection)iPart.EntityCollection((int)Obj3dType.o3d_face);
             // Получаем массив скругляемых граней
-            ksEntityCollection entityCollectionFillet = (ksEntityCollection)filletDefinition.array();
+            ksEntityCollection entityCollectionFillet = 
+                (ksEntityCollection)filletDefinition.array();
             entityCollectionFillet.Clear();
             // Заполняем массив скругляемых объектов
             entityCollectionFillet.Add(entityCollectionPart.GetByIndex(index));
@@ -251,15 +279,18 @@ namespace TeaPotAPI
         /// <param name="thewidth">Ширина прямоугольника</param>
         /// <param name="parx">Координата X прямоугольника</param>
         /// <param name="pary">Координата Y прямоугольника</param>
-        public void RectangleCreator(ksPart iPart, KompasObject _kompas, TeaPotParams teaPotParams, double theoffset, double theheight, 
-            double thelength, double thewidth, double parx, double pary)
+        public void RectangleCreator(ksPart iPart, KompasObject _kompas, 
+            TeaPotParams teaPotParams, double theoffset, 
+            double theheight, double thelength, 
+            double thewidth, double parx, double pary)
         {
             double offset = theoffset;
             CreateSketch(out iSketch, out iDefinitionSketch, offset);
             // Интерфейс для рисования = на скетче;
             ksDocument2D iDocument2D = (ksDocument2D)iDefinitionSketch.BeginEdit();
             // Построить прямоугольник (x1,y1, x2,y2, style)
-            ksRectangleParam par = (ksRectangleParam)_kompas.GetParamStruct((short)StructType2DEnum.ko_RectangleParam);
+            ksRectangleParam par = 
+                (ksRectangleParam)_kompas.GetParamStruct((short)StructType2DEnum.ko_RectangleParam);
             // Высота прямоугольника
             double height = theheight;
             // Длина прямоугольника

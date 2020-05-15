@@ -8,11 +8,11 @@ namespace TeaPotAPI
     public class KompasConnector
     {
         // Выбор определенного окна приложения компас
-        public KompasObject _kompas = null;
+        public KompasObject kompas { get; set; }
         // Создание 3Д документа для построения предметов
-        private ksDocument3D _doc3D = null;
+        private ksDocument3D _doc3D;
         // Управление над интерфейсом программы
-        public ksPart iPart = null;
+        public ksPart iPart { get; set; }
 
         /// <summary>
         /// Запуск Kompas 3D
@@ -29,16 +29,16 @@ namespace TeaPotAPI
         public void TakeKompas()
         {
             // Если окно Компаса 3D не включено - создать обьект Компаса 3D
-            if (_kompas == null)
+            if (kompas == null)
             {
                 Type t = Type.GetTypeFromProgID("KOMPAS.Application.5");
-                _kompas = (KompasObject)Activator.CreateInstance(t);
+                kompas = (KompasObject)Activator.CreateInstance(t);
             }
             // Показать Компас 3D          
-            _kompas.Visible = true;
-            _kompas.ActivateControllerAPI();
+            kompas.Visible = true;
+            kompas.ActivateControllerAPI();
             // Присвоение управления документами _doc3D
-            _doc3D = (ksDocument3D)_kompas.Document3D();
+            _doc3D = (ksDocument3D)kompas.Document3D();
             // Создание документа
             _doc3D.Create(false, true);
             // Получение интерфейса детали

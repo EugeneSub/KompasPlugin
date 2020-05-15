@@ -42,8 +42,11 @@ namespace TeaPotParameters
         /// <param name="teapotHandleSize">Размер ручки</param>
         /// <param name="teapotbodycolor">Цвет корпуса</param>
         /// <param name="teapothandlecolor">Цвет ручки</param>
-        public TeaPotParams(double teapotDiameter, double teapotHeight, double teapotSpoutLength, double teapotSpoutWidth, double teapotSpoutHeight, double teapotHandleSize, 
-            TheColor teapotbodycolor, TheColor teapothandlecolor)
+        public TeaPotParams(double teapotDiameter, 
+            double teapotHeight, double teapotSpoutLength, 
+            double teapotSpoutWidth, double teapotSpoutHeight, 
+            double teapotHandleSize, TheColor teapotbodycolor, 
+            TheColor teapothandlecolor)
         {
             TeaPotDiameter = teapotDiameter;
             TeaPotHeight = teapotHeight;
@@ -146,10 +149,7 @@ namespace TeaPotParameters
         /// </summary>
         public TheColor TeaPotBodyColor
         {
-            get
-            {
-                return _bodyColor;
-            }
+            get =>_bodyColor;
             set
             {
                 CheckColor(value);
@@ -162,10 +162,7 @@ namespace TeaPotParameters
         /// </summary>
         public TheColor TeaPotHandleColor
         {
-            get
-            {
-                return _handleColor;
-            }
+            get => _handleColor;
             set
             {
                 CheckColor(value);
@@ -179,12 +176,17 @@ namespace TeaPotParameters
         /// <param name="value"></param>
         public void CheckColor(TeaPotParams.TheColor value)
         {
-            if (value != TheColor.Black && value != TheColor.Blue && value != TheColor.Green && value != TheColor.HeavenBlue && value != TheColor.Orange && value != TheColor.Purple 
-                && value != TheColor.Red && value != TheColor.Yellow)
+            if (value != TheColor.Black && 
+                value != TheColor.Blue && 
+                value != TheColor.Green && 
+                value != TheColor.HeavenBlue && 
+                value != TheColor.Orange && 
+                value != TheColor.Purple 
+                && value != TheColor.Red &&
+                value != TheColor.Yellow)
             {
                 throw new ArgumentException("Неверный цвет");
-            }
-                
+            }    
         }
 
         /// <summary>
